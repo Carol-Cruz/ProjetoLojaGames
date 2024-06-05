@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,7 +23,8 @@ public class Produto {
 	@Size(min = 5, max = 100, message = "O atributo NOME deve ter no mínimo 5 caracteres e no máximo 100 caracteres.")
 	private String nome;
 
-	@JsonIgnoreProperties("Produto")
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 
 	public Long getId() {
